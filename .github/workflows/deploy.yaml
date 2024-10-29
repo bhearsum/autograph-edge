@@ -43,8 +43,9 @@ jobs:
         uses: google-github-actions/auth@v2
         with:
           token_format: 'access_token'
-          service_account: artifact-writer@${{ vars.GCP_PROJECT_ID}}.iam.gserviceaccount.com
-          workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
+          # service_account: artifact-writer@${{ vars.GCP_PROJECT_ID}}.iam.gserviceaccount.com
+          # workload_identity_provider: ${{ vars.GCPV2_GITHUB_WORKLOAD_IDENTITY_PROVIDER }}
+          credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
       - name: Login to Google Artifact Registry
         if: ${{ vars.GCP_PROJECT_ID }}
